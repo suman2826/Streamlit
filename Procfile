@@ -1,1 +1,1 @@
-web: gunicorn dep:app
+web: sh setup.sh && streamlit run Text_Preprocessing_and_Text Summarizer.py
