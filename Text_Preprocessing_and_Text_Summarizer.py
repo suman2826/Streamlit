@@ -5,11 +5,6 @@ from sumy.parsers.plaintext import PlaintextParser
 from sumy.nlp.tokenizers import Tokenizer
 from sumy.summarizers.lex_rank import LexRankSummarizer
 
-import spacy
-from spacy import displacy
-nlp = spacy.load('en')
-HTML_WRAPPER = """<div style="overflow-x: auto; border: 1px solid #e6e9ef; border-radius: 0.25rem; padding: 1rem">{}</div>"""
-
 
 def sumy_summarizer(docx):
 	parser = PlaintextParser.from_string(docx,Tokenizer("english"))
@@ -19,13 +14,9 @@ def sumy_summarizer(docx):
 	result = ' '.join(summary_list)
 	return result
 
-#@st.cache(allow_output_mutation=True)
-def analyze_text(text):
-	return nlp(text)
-
 def main():
 	st.title("Summary and Text Preprocessing")
-	activity1 = ["Summarize","Named Entity Recognition","Text Preprocessing"]
+	activity1 = ["Summarize","Text Preprocessing"]
 	choice = st.sidebar.selectbox("Select Function",activity1)
 	if choice == 'Summarize':
 		st.subheader("Summary with NLP")
@@ -39,15 +30,6 @@ def main():
 				summary_result = sumy_summarizer(raw_text)
 
 			st.write(summary_result)
-	if choice == 'Named Entity Recognition':
-		st.subheader("Named Entity Recog with Spacy")
-		raw_text = st.text_area("Enter Text Here","Type Here")
-		if st.button("Analyze"):
-			docx = analyze_text(raw_text)
-			html = displacy.render(docx,style="ent")
-			html = html.replace("\n\n","\n")
-			st.write(HTML_WRAPPER.format(html),unsafe_allow_html=True)
-
 	if choice == 'Text Preprocessing':
 		st.subheader("Text Preprocessing")
 		raw_text = st.text_area("Enter Text Here")
