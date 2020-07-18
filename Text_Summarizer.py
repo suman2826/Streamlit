@@ -29,7 +29,7 @@ def main():
 			elif summary_choice == "Sumy Lex Rank":
 				summary_result = sumy_summarizer(raw_text)
 
-			st.write(summary_result)
+		st.write(summary_result)
 
 
 
