@@ -30,14 +30,6 @@ def main():
 				summary_result = sumy_summarizer(raw_text)
 
 			st.write(summary_result)
-	
-			if c3 in choiceOperations:
-				if flag:
-					out = raw_text.split()
-					flag = False
-				else:
-					out = out.split()
-		st.write(out)
 
 
 
