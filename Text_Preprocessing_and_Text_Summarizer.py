@@ -16,7 +16,7 @@ def sumy_summarizer(docx):
 
 def main():
 	st.title("Summary and Text Preprocessing")
-	activity1 = ["Summarize","Text Preprocessing"]
+	activity1 = ["Summarize"]
 	choice = st.sidebar.selectbox("Select Function",activity1)
 	if choice == 'Summarize':
 		st.subheader("Summary with NLP")
