@@ -30,35 +30,7 @@ def main():
 				summary_result = sumy_summarizer(raw_text)
 
 			st.write(summary_result)
-	if choice == 'Text Preprocessing':
-		st.subheader("Text Preprocessing")
-		raw_text = st.text_area("Enter Text Here")
-		c1 = "Convert to Lower Case"
-		c2 = "Remove Punctuation"
-		c3 = "Convert sentence into words"
-		choice2 = [c1,c2,c3]
-		choiceOperations = []
-		choiceOperations = st.multiselect("Operations",choice2)
-		print(choiceOperations)
-		out, flag = '',True
-		if st.button("Process"):
-			if c1 in choiceOperations:
-				if flag:
-					out = raw_text.lower()
-					flag = False
-				else:
-					out = out.lower()
-			if c2 in choiceOperations:
-				punctuations = '''!()-[]{};:'"\,>./?@#$%^&*_~'''
-				if flag:
-					for x in raw_text:
-						if x in punctuations:
-							out = raw_text.replace(x,"")
-					flag = False
-				else:
-					for x in out:
-						if x in punctuations:
-							out = out.replace(x,"")
+	
 			if c3 in choiceOperations:
 				if flag:
 					out = raw_text.split()
